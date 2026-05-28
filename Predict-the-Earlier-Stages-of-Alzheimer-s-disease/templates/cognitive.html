@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card-dark">
+  <h3>🧠 Cognitive Screening Module</h3>
+
+  <p style="color:#94a3b8; font-size:13px;">
+    Clinical questionnaire-based assessment for early cognitive decline detection
+  </p>
+
+  <div style="font-size:12px; color:#64748b;">
+    Instruction: Rate each symptom from <b>0 (Never)</b> to <b>2 (Frequent)</b>
+  </div>
+</div>
+
+<!-- FORM -->
+<form action="/predict_cognitive" method="post">
+
+  <!-- SECTION 1 -->
+  <div class="card-dark">
+    <h5>🧠 Memory Function</h5>
+
+    <label>Forgetting recent events</label>
+    <input name="q1" class="form-control mt-1 mb-3" placeholder="0-2" required>
+
+    <label>Misplacing objects frequently</label>
+    <input name="q2" class="form-control mt-1 mb-3" placeholder="0-2" required>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="card-dark">
+    <h5>⏳ Orientation & Awareness</h5>
+
+    <label>Confusion about time or place</label>
+    <input name="q3" class="form-control mt-1 mb-3" placeholder="0-2" required>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="card-dark">
+    <h5>🗣️ Language & Communication</h5>
+
+    <label>Difficulty finding words</label>
+    <input name="q4" class="form-control mt-1 mb-3" placeholder="0-2" required>
+  </div>
+
+  <!-- SECTION 4 -->
+  <div class="card-dark">
+    <h5>⚙️ Daily Functioning</h5>
+
+    <label>Difficulty performing daily tasks</label>
+    <input name="q5" class="form-control mt-1 mb-3" placeholder="0-2" required>
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="card-dark text-center">
+
+    <p style="font-size:12px; color:#64748b;">
+      AI will analyze cognitive pattern severity using clinical scoring model
+    </p>
+
+    <button class="btn btn-primary w-100">
+      🧠 Analyze Cognitive Risk
+    </button>
+
+  </div>
+
+</form>
+
+{% endblock %}

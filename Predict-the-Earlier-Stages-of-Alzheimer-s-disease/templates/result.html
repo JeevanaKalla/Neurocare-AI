@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card-dark text-center">
+
+  <h3>🏥 Clinical AI Diagnostic Report</h3>
+
+  <p style="color:#94a3b8; font-size:13px;">
+    NeuroCare AI Risk Assessment System
+  </p>
+
+  <div style="font-size:12px; color:#64748b;">
+    Mode: {{ mode }}
+  </div>
+
+</div>
+
+<!-- MAIN RESULT -->
+<div class="card-dark text-center">
+
+  <h2 style="margin-bottom:10px;">
+
+    {% if 'Low' in label %}
+      <span style="color:#22c55e;">🟢 {{ label }}</span>
+
+    {% elif 'Mild' in label %}
+      <span style="color:#facc15;">🟡 {{ label }}</span>
+
+    {% else %}
+      <span style="color:#ef4444;">🔴 {{ label }}</span>
+    {% endif %}
+
+  </h2>
+
+  <p style="color:#94a3b8;">
+    AI-generated risk classification based on multimodal clinical inputs
+  </p>
+
+</div>
+
+<!-- SCORE DASHBOARD -->
+<div class="row g-3">
+
+  <div class="col-md-4">
+    <div class="card-dark text-center">
+      <h5>🧪 Biomarker Risk</h5>
+      <h3>{{ biomarker_score }}</h3>
+      <p style="font-size:12px; color:#64748b;">Biological indicators</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card-dark text-center">
+      <h5>🧠 Cognitive Risk</h5>
+      <h3>{{ questionnaire_score }}</h3>
+      <p style="font-size:12px; color:#64748b;">Behavioral indicators</p>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card-dark text-center">
+      <h5>🔬 Final AI Score</h5>
+      <h3>{{ final_score }}</h3>
+      <p style="font-size:12px; color:#64748b;">Fusion model output</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- INTERPRETATION -->
+<div class="card-dark">
+
+  <h5>🧠 Clinical Interpretation</h5>
+
+  <p style="color:#94a3b8; font-size:13px;">
+
+    {% if 'Low' in label %}
+
+      The patient shows normal cognitive and biomarker patterns.
+      No significant neurodegenerative risk detected.
+
+    {% elif 'Mild' in label %}
+
+      Early cognitive changes detected.
+      This may indicate Mild Cognitive Impairment (MCI).
+
+    {% else %}
+
+      Strong indicators of neurodegenerative progression detected.
+      Clinical evaluation is recommended.
+
+    {% endif %}
+
+  </p>
+
+</div>
+
+<!-- AI EXPLANATION -->
+<div class="card-dark">
+
+  <h5>🧠 AI Decision Insight</h5>
+
+  <ul style="font-size:13px; color:#94a3b8;">
+
+    <li>Model combines biomarker + cognitive features</li>
+    <li>Weighted fusion approach used for final prediction</li>
+    <li>Higher Tau levels strongly influence risk score</li>
+    <li>Cognitive decline patterns contribute to classification</li>
+
+  </ul>
+
+</div>
+
+<!-- DISCLAIMER -->
+<div class="card-dark">
+
+  <h5>⚠ Clinical Disclaimer</h5>
+
+  <p style="font-size:12px; color:#64748b;">
+    This system is a research prototype and does not replace clinical diagnosis.
+    Results should be interpreted by qualified healthcare professionals.
+  </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>NeuroCare AI | Clinical Report</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #0b1220;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #1f2937;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      color: white;
+    }
+
+    .low { color: #22c55e; }
+    .mid { color: #facc15; }
+    .high { color: #ef4444; }
+
+    .footer {
+      margin-top: 40px;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+      color: #94a3b8;
+      border-top: 1px solid #1f2937;
+    }
+
+    .section-title {
+      color: #93c5fd;
+      font-weight: 600;
+    }
+
+    .explain-box {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<p class="text-muted">Mode: {{ mode }}</p>
+<body>
+
+<div class="container mt-5">
+
+  <div class="card p-4">
+
+    <h3>🏥 Clinical AI Diagnosis Report</h3>
+
+    <h2 class="mt-3
+      {% if 'Low' in label %}low
+      {% elif 'Mild' in label %}mid
+      {% else %}high
+      {% endif %}
+    ">
+      {{ label }}
+    </h2>
+
+    <p class="text-muted">{{ advice }}</p>
+
+    <hr>
+
+    <!-- SCORES -->
+    <div class="row text-center">
+
+      <div class="col">
+        <h5>Biomarker Score</h5>
+        <h3>{{ biomarker_score }}</h3>
+      </div>
+
+      <div class="col">
+        <h5>Cognitive Score</h5>
+        <h3>{{ questionnaire_score }}</h3>
+      </div>
+
+      <div class="col">
+        <h5>Final Risk</h5>
+        <h3>{{ final_score }}</h3>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- EXPLANATION SECTION -->
+  <div class="card p-4 mt-4">
+
+    <h4 class="section-title">🧠 What Your Result Means</h4>
+
+    {% if 'Low' in label %}
+
+      <p class="explain-box">
+        ✅ <b>Low Risk</b> means your brain function and biomarker levels are within a normal range.
+        There are no strong signs of Alzheimer’s disease at this stage.
+        Mild memory issues (if any) are usually due to normal aging, stress, or lifestyle factors.
+      </p>
+
+      <p class="explain-box">
+        👉 Recommendation: Maintain a healthy lifestyle, mental exercise, and routine check-ups.
+      </p>
+
+    {% elif 'Mild' in label %}
+
+      <p class="explain-box">
+        ⚠️ <b>Mild Cognitive Impairment (MCI)</b> means there are early signs of memory or thinking changes.
+        This is NOT dementia, but it may increase the risk of developing Alzheimer’s in the future.
+      </p>
+
+      <p class="explain-box">
+        👉 Recommendation: Consult a neurologist for detailed evaluation and monitor symptoms regularly.
+      </p>
+
+    {% else %}
+
+      <p class="explain-box">
+        🔴 <b>High Risk</b> indicates strong patterns associated with Alzheimer’s disease.
+        This does not confirm diagnosis, but suggests significant cognitive and biomarker abnormalities.
+      </p>
+
+      <p class="explain-box">
+        👉 Recommendation: Immediate medical consultation with a neurologist is strongly advised.
+      </p>
+
+    {% endif %}
+
+  </div>
+
+  <!-- MEDICAL DISCLAIMER -->
+  <div class="card p-4 mt-4">
+
+    <h5 class="section-title">⚠️ Important Notice</h5>
+
+    <p class="explain-box">
+      This AI system is a research and educational tool. It is designed to support clinical understanding,
+      not replace professional medical diagnosis or treatment decisions.
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><b>NeuroCare AI System</b> © 2026</p>
+    <p>Developed by Jeevana Kalla | AI Clinical Decision Support Prototype</p>
+  </div>
+
+</div>
+
+</body>
+</html>

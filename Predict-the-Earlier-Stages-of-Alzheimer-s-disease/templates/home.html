@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+  .center-stage {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .fade-step {
+    display: none;
+    animation: fadeIn 1.5s ease-in-out forwards;
+  }
+
+  .active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #38bdf8;
+  }
+
+  .subtitle {
+    color: #94a3b8;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .btn-big {
+    padding: 12px;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 10px;
+  }
+</style>
+
+<div class="card-dark center-stage">
+
+  <!-- STEP 1 -->
+  <div id="step1" class="fade-step active">
+    <div class="title">🧠 NeuroCare AI</div>
+    <div class="subtitle">Developed by Jeevana Kalla</div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div id="step2" class="fade-step">
+    <div class="title">🔬 Clinical Intelligence System</div>
+    <div class="subtitle">
+      Designed to support researchers and clinicians in early Alzheimer’s risk detection
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div id="step3" class="fade-step">
+    <div class="title">🏥 Choose Assessment Mode</div>
+    <div class="subtitle">
+      Select how you want to evaluate patient cognitive health
+    </div>
+
+    <div class="mt-4">
+
+      <a href="/cognitive" class="btn btn-primary btn-big">
+        🧠 Cognitive Screening
+      </a>
+
+      <a href="/biomarker" class="btn btn-success btn-big">
+        🧪 Biomarker Analysis
+      </a>
+
+      <a href="/full" class="btn btn-danger btn-big">
+        🔬 Full AI Assessment
+      </a>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  let step = 1;
+
+  function showStep(n) {
+    document.querySelectorAll(".fade-step").forEach(el => el.classList.remove("active"));
+    document.getElementById("step" + n).classList.add("active");
+  }
+
+  setTimeout(() => {
+    showStep(2);
+  }, 2500);
+
+  setTimeout(() => {
+    showStep(3);
+  }, 5500);
+</script>
+
+{% endblock %}

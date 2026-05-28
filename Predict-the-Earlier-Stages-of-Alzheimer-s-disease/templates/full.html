@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- HEADER -->
+<div class="card-dark">
+  <h3>🔬 Full AI Clinical Assessment</h3>
+
+  <p style="color:#94a3b8; font-size:13px;">
+    Integrated biomarker + cognitive evaluation system for Alzheimer’s risk prediction
+  </p>
+
+  <div style="font-size:12px; color:#64748b;">
+    This is the highest accuracy mode combining biological and behavioral indicators
+  </div>
+</div>
+
+<!-- WORKFLOW INDICATOR -->
+<div class="card-dark">
+  <h5>📊 Clinical Workflow</h5>
+
+  <div style="font-size:13px; color:#94a3b8;">
+    Step 1 → Biomarkers Analysis  
+    Step 2 → Cognitive Evaluation  
+    Step 3 → AI Fusion Prediction
+  </div>
+</div>
+
+<form action="/predict_full" method="post">
+
+  <div class="row g-3">
+
+    <!-- LEFT: BIOMARKERS -->
+    <div class="col-md-6">
+
+      <div class="card-dark">
+        <h5>🧪 Biomarker Panel</h5>
+
+        <label>Cystatin C</label>
+        <input name="Cystatin_C" class="form-control mb-3" required>
+
+        <label>MMP10</label>
+        <input name="MMP10" class="form-control mb-3" required>
+
+        <label>Tau Protein</label>
+        <input name="tau" class="form-control mb-3" required>
+
+        <p style="font-size:12px; color:#64748b;">
+          Biological markers indicating neurodegeneration activity
+        </p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: COGNITIVE -->
+    <div class="col-md-6">
+
+      <div class="card-dark">
+        <h5>🧠 Cognitive Panel</h5>
+
+        <label>Memory loss of recent events</label>
+        <input name="q1" class="form-control mb-2" placeholder="0-2" required>
+
+        <label>Misplacing objects</label>
+        <input name="q2" class="form-control mb-2" placeholder="0-2" required>
+
+        <label>Time/space confusion</label>
+        <input name="q3" class="form-control mb-2" placeholder="0-2" required>
+
+        <label>Word finding difficulty</label>
+        <input name="q4" class="form-control mb-2" placeholder="0-2" required>
+
+        <label>Daily task difficulty</label>
+        <input name="q5" class="form-control mb-2" placeholder="0-2" required>
+
+        <p style="font-size:12px; color:#64748b;">
+          Behavioral indicators of cognitive decline
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- SUBMIT -->
+  <div class="card-dark text-center mt-3">
+
+    <p style="font-size:12px; color:#64748b;">
+      AI Fusion Model will combine biological + cognitive signals
+    </p>
+
+    <button class="btn btn-danger w-100">
+      🔬 Run Full Clinical Analysis
+    </button>
+
+  </div>
+
+</form>
+
+{% endblock %}
